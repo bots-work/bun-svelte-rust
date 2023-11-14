@@ -1,4 +1,6 @@
-/target
-/pkg
+target
+pkg
 Cargo.lock
 node_modules
+.svelte-kit
+bun.lockb

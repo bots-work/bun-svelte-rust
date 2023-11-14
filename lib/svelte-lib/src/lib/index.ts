@@ -1,0 +1,1 @@
+export { default as LibWasm } from './component/LibWasm.svelte'

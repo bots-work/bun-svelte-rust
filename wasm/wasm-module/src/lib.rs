@@ -1,4 +1,4 @@
-use std::fmt;
+use std::mem;
 use wasm_bindgen::prelude::*;
 #[wasm_bindgen]
 //чтобы каждая ячейка была представлена ​​одним байтом
@@ -93,36 +93,16 @@ impl Universe {
             cells,
         }
     }
-    pub fn render(&self) -> String {
-        self.to_string()
-    }
     pub fn width(&self) -> u32 {
         self.width
     }
-
     pub fn height(&self) -> u32 {
         self.height
     }
-
-    pub fn cells(&self) -> *const Cell {
-        self.cells.as_ptr()
-    }
-}
-// Пока что состояние Вселенной представляется в виде вектора ячеек. Чтобы сделать это удобочитаемым человеком, давайте реализуем базовый рендеринг текста.
-//  Идея состоит в том, чтобы записать вселенную построчно в виде текста и для каждой живой ячейки вывести символ Юникода ◼(«черный средний квадрат»).
-// Для мертвых клеток мы будем печатать ◻ («белый средний квадрат»).
-
-// Реализуя этот Display признак из стандартной библиотеки Rust, мы можем добавить способ форматирования структуры в удобном для пользователя виде.
-// Это также автоматически даст нам to_string метод.
-impl fmt::Display for Universe {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        for line in self.cells.as_slice().chunks(self.width as usize) {
-            for &cell in line {
-                let symbol = if cell == Cell::Dead { '◻' } else { '◼' };
-                write!(f, "{}", symbol)?;
-            }
-            write!(f, "\n")?;
+    pub fn cells(&self) -> js_sys::Uint8Array {
+        unsafe {
+            let u8_cells = mem::transmute::<&Vec<Cell>, &Vec<u8>>(&self.cells);
+            js_sys::Uint8Array::view(&u8_cells)
         }
-        Ok(())
     }
 }
