@@ -1,7 +1,4 @@
-mod utils;
-
 use std::fmt;
-
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -75,18 +72,15 @@ impl Universe {
                     // All other cells remain in the same state.
                     (otherwise, _) => otherwise,
                 };
-
                 next[idx] = next_cell;
             }
         }
-
         self.cells = next;
     }
     // инициализирует вселенную интересным шаблоном живых и мертвых ячеек
     pub fn new() -> Universe {
-        let width = 64;
+        let width = 124;
         let height = 64;
-
         let cells = (0..width * height)
             .map(|i| {
                 if i % 2 == 0 || i % 7 == 0 {
@@ -96,14 +90,12 @@ impl Universe {
                 }
             })
             .collect();
-
         Universe {
             width,
             height,
             cells,
         }
     }
-
     pub fn render(&self) -> String {
         self.to_string()
     }
