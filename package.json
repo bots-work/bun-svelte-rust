@@ -1,0 +1,19 @@
+{
+  "name": "rust-wasm",
+  "version": "1.0.0",
+  "description": "This project is a generic starter for developers to use in Codespaces that includes basic system tools and extensions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bots-work/rust-wasm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bots-work/rust-wasm/issues"
+  },
+  "homepage": "https://github.com/bots-work/rust-wasm#readme"
+}
