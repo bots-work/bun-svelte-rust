@@ -8,6 +8,9 @@
     "bun-types": "latest",
     "vite-plugin-wasm": "^3.2.2"
   },
+  "scripts": {
+    "gource": "gource --hide dirnames,filenames,mouse,progress  --font-colour 87ceeb --highlight-colour BFC8D1 --disable-input --camera-mode overview --background 1b2634 --seconds-per-day 0.1 --title bsr --auto-skip-seconds 1 --file-idle-time 0 --key -1920x1080 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 4 -bf 0  ./tmp/FullHD.mp4"
+  },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
