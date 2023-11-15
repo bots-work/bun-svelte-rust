@@ -23,5 +23,4 @@ curl -fsSL https://bun.sh/install | bash
 
 ```shell
 wasm-pack build
-
 ```
