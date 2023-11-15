@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Universe, Cell } from "@wasm/module/pkg"
-  const CELL_SIZE = 5 // px
+  import { Universe, Cell } from "@wasm/module"
+  const CELL_SIZE = 4
   const GRID_COLOR = "#CCCCCC"
   const DEAD_COLOR = "#FFFFFF"
   const ALIVE_COLOR = "#000000"
@@ -11,18 +11,14 @@
 
   const draw = (canvas: HTMLCanvasElement) => {
     const ctx = canvas.getContext("2d")
-    // canvas.height = (CELL_SIZE + 1) * height + 1
-    // canvas.width = (CELL_SIZE + 1) * width + 1
     if (ctx) {
       const drawGrid = () => {
         ctx.beginPath()
         ctx.strokeStyle = GRID_COLOR
-        // Vertical lines.
         for (let i = 0; i <= width; i++) {
           ctx.moveTo(i * (CELL_SIZE + 1) + 1, 0)
           ctx.lineTo(i * (CELL_SIZE + 1) + 1, (CELL_SIZE + 1) * height + 1)
         }
-        // Horizontal lines.
         for (let j = 0; j <= height; j++) {
           ctx.moveTo(0, j * (CELL_SIZE + 1) + 1)
           ctx.lineTo((CELL_SIZE + 1) * width + 1, j * (CELL_SIZE + 1) + 1)
@@ -36,7 +32,6 @@
         for (let row = 0; row < height; row++) {
           for (let col = 0; col < width; col++) {
             const idx = getIndex(row, col)
-            //@ts-ignore
             ctx.fillStyle = cells[idx] === Cell.Dead ? DEAD_COLOR : ALIVE_COLOR
             ctx.fillRect(col * (CELL_SIZE + 1) + 1, row * (CELL_SIZE + 1) + 1, CELL_SIZE, CELL_SIZE)
           }

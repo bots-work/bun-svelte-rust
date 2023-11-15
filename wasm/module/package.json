@@ -2,6 +2,7 @@
   "name": "@wasm/module",
   "module": "index.js",
   "type": "module",
+  "types": "./pkg/wasm_module.d.ts",
   "devDependencies": {
     "bun-types": "latest"
   },

@@ -1,5 +1,5 @@
 [package]
-name = "wasm-test"
+name = "wasm-module"
 version = "0.1.0"
 authors = ["{{authors}}"]
 edition = "2018"
