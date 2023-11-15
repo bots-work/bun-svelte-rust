@@ -1,19 +1,18 @@
 {
-  "name": "rust-wasm",
+  "name": "bun-svelte-rust",
+  "author": "zavx0z",
   "version": "1.0.0",
-  "description": "This project is a generic starter for developers to use in Codespaces that includes basic system tools and extensions.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Bun 1 / Svelte 5 / Rust 1 - monorepo template with codespace",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest",
+    "vite-plugin-wasm": "^3.2.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bots-work/rust-wasm.git"
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bots-work/rust-wasm/issues"
-  },
-  "homepage": "https://github.com/bots-work/rust-wasm#readme"
+  "workspaces": [
+    "wasm/*",
+    "lib/*"
+  ]
 }

@@ -1,3 +1,4 @@
+use std::mem;
 use wasm_bindgen::prelude::*;
 #[wasm_bindgen]
 //чтобы каждая ячейка была представлена ​​одним байтом
@@ -98,7 +99,10 @@ impl Universe {
     pub fn height(&self) -> u32 {
         self.height
     }
-    pub fn cells(&self) -> *const Cell {
-        self.cells.as_ptr()
+    pub fn cells(&self) -> js_sys::Uint8Array {
+        unsafe {
+            let u8_cells = mem::transmute::<&Vec<Cell>, &Vec<u8>>(&self.cells);
+            js_sys::Uint8Array::view(&u8_cells)
+        }
     }
 }
